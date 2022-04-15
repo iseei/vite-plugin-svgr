@@ -6,11 +6,13 @@ import type { Plugin } from 'vite'
 type Options = {
   svgrOptions?: Config
   esbuildOptions?: Parameters<typeof transformWithEsbuild>[2]
+  defaultExportComponent?: boolean,
 }
 
 export = function svgrPlugin({
   svgrOptions,
   esbuildOptions,
+  defaultExportComponent,
 }: Options = {}): Plugin {
   return {
     name: 'vite:svgr',
@@ -24,14 +26,14 @@ export = function svgrPlugin({
           componentName: 'ReactComponent',
           filePath: id,
         }).then((res) => {
-          return res.replace(
+          return defaultExportComponent ? res : res.replace(
             'export default ReactComponent',
             `export { ReactComponent }`
           )
         })
 
         const res = await transformWithEsbuild(
-          componentCode + '\n' + code,
+          componentCode + '\n' + (defaultExportComponent ? '' : code),
           id,
           { loader: 'jsx', ...esbuildOptions }
         )

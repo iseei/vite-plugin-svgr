@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-svgr",
+  "name": "@iseei/vite-plugin-svgr",
   "version": "1.1.0",
   "description": "Vite plugin to transform SVGs into React components",
   "main": "lib/index.js",
@@ -8,7 +8,7 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "repository": "pd4d10/vite-plugin-svgr",
+  "repository": "iseei/vite-plugin-svgr",
   "files": [
     "lib",
     "client.d.ts"
@@ -17,7 +17,7 @@
     "vite",
     "vite-plugin"
   ],
-  "author": "Rongjian Zhang",
+  "author": "iseei",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^17.0.8",
